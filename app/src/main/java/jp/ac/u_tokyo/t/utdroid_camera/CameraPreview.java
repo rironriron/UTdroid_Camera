@@ -3,6 +3,7 @@ package jp.ac.u_tokyo.t.utdroid_camera;
 import android.content.Context;
 import android.hardware.Camera;
 import android.os.Environment;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -33,6 +34,17 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     /* コンストラクタ */
     public CameraPreview(Context context) {
         super(context);
+
+        this.context = context;
+
+        /* SurfaceHolderのコールバックを登録 */
+        getHolder().addCallback(this);
+        getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+    }
+
+    /* レイアウトxmlに埋め込む時に使われるコンストラクタ */
+    public CameraPreview(Context context, AttributeSet attrs) {
+        super(context, attrs);
 
         this.context = context;
 

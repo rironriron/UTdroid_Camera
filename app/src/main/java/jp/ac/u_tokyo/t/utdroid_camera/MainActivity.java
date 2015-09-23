@@ -16,9 +16,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /* CameraPreviewのインスタントを生成 */
-        cameraPreview = new CameraPreview(this);
-
         /* Android 4.4移行であれば、以下のコードでナビゲーションバーを非表示にできる */
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             View decorView = this.getWindow().getDecorView();
@@ -27,8 +24,14 @@ public class MainActivity extends AppCompatActivity {
                     View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
 
+        /* CameraPreviewのインスタントを生成 */
+        cameraPreview = new CameraPreview(this);
+
         /* レイアウトのxmlファイルを読み込む代わりにCameraPreviewを指定 */
         setContentView(cameraPreview);
+
+        /* レイアウトのxmlファイルから読み込むことも出来る */
+        /* setContentView(R.layout.activity_main); */
     }
 
     /* 物理キーでシャッターを切る */
