@@ -185,6 +185,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
                         FileOutputStream fos = new FileOutputStream(filePath + fileName);
                         BufferedOutputStream bos = new BufferedOutputStream(fos);
                         bos.write(data);
+                        bos.flush();
                         bos.close();
                     } catch (Exception e) {
                         Toast.makeText(context, "ファイルの保存中にエラーが発生しました。", Toast.LENGTH_SHORT).show();
