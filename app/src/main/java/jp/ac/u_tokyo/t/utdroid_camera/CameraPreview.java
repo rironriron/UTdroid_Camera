@@ -59,7 +59,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         /* カメラを起動する */
-        if (camera.getNumberOfCameras() > 0) {
+        if (Camera.getNumberOfCameras() > 0) {
             /* 端末に複数のカメラが搭載されている場合でも、大抵は0番がメインカメラ */
             camera = Camera.open(0);
             try {
@@ -84,7 +84,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             List<Camera.Size> pictureSizes = params.getSupportedPictureSizes();
             int maxHeight = 0;
             for (Camera.Size size : pictureSizes) {
-                if (size.height < maxHeight) {
+                if (size.height > maxHeight) {
                     maxHeight = size.height;
                     params.setPictureSize(size.width, size.height);
                 }
@@ -166,7 +166,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
                 if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                     Toast.makeText(context, "SDカードを利用できません。", Toast.LENGTH_SHORT).show();
                 } else {
-                    /* 保存するディレクトリを */
+                    /* 保存するディレクトリ */
                     String filePath = Environment.getExternalStorageDirectory().getPath() + "/UTdroid/";
                     File directory = new File(filePath);
 
