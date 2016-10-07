@@ -187,6 +187,8 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
                         bos.write(data);
                         bos.flush();
                         bos.close();
+
+                        Toast.makeText(context, "保存しました（" + filePath + fileName + "）", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         Toast.makeText(context, "ファイルの保存中にエラーが発生しました。", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
