@@ -101,6 +101,9 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
                 }
             }
 
+            /* パラメータを適用 */
+            camera.setParameters(params);
+
             /* プレビュー開始 */
             camera.startPreview();
         }
