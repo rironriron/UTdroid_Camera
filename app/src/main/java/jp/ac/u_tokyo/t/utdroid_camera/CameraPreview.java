@@ -148,6 +148,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
      * シャッターを切った時のコールバック
      */
     private Camera.ShutterCallback shutterListener = new Camera.ShutterCallback() {
+        @Override
         public void onShutter() {
             /* 何もしない（シャッター音は自動で鳴る） */
         }
@@ -157,6 +158,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
      * 撮影データが取得可能になった時のコールバック
      */
     private Camera.PictureCallback jpegListener = new Camera.PictureCallback() {
+        @Override
         public void onPictureTaken(byte[] data, Camera camera) {
             if (data == null) {
                 /* データがない場合 */
