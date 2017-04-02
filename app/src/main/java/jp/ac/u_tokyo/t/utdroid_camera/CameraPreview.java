@@ -101,11 +101,16 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
                 }
             }
 
-            /* パラメータを適用 */
-            camera.setParameters(params);
+            /* ホームボタンでアプリを中断させた場合の、ライフサイクルの不整合で強制終了するのを防ぐtry catch文 */
+            try {
+                /* パラメータを適用 */
+                camera.setParameters(params);
 
-            /* プレビュー開始 */
-            camera.startPreview();
+                /* プレビュー開始 */
+                camera.startPreview();
+            }catch (RuntimeException e) {
+                e.printStackTrace();
+            }
         }
     }
 
